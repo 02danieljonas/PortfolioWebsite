@@ -1,10 +1,10 @@
 import React, { ReactNode } from "react";
 
-interface AppsProps {
+interface AppShortcutProps {
     name: ReactNode;
 }
 
-const Apps = ({ name }: AppsProps) => {
+const AppShortcut = ({ name }: AppShortcutProps) => {
     return (
         <div className="relative pb-8">
             <div className="w-12 h-12 bg-white p-2 text-black "></div>
@@ -15,4 +15,4 @@ const Apps = ({ name }: AppsProps) => {
     );
 };
 
-export default Apps;
+export default AppShortcut;
