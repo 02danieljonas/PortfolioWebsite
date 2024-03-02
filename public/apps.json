@@ -1,0 +1,11 @@
+{
+    "apps": [
+        {
+            "name": "Example",
+            "tags": ["desktop", "menu-pinned"],
+            "path": "",
+            "img": "/app-icons/example.jpg",
+            "url": "https://example.com/"
+        }
+    ]
+}
