@@ -2,7 +2,7 @@ import { useState } from "react";
 import Menu from "./Menu/Menu";
 
 const Taskbar = () => {
-    const [isMenuActive, setIsMenuActive] = useState<boolean>(true);
+    const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
 
     return (
         <>
