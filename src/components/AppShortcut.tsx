@@ -2,6 +2,10 @@ import { ReactNode } from "react";
 
 interface AppShortcutProps {
     name: ReactNode;
+    tags: string[];
+    path: string;
+    img: string;
+    url: string;
 }
 
 const AppShortcut = ({ name }: AppShortcutProps) => {
