@@ -34,7 +34,7 @@ const Screen = () => {
     const screenRef = useRef<HTMLDivElement>(null);
     return (
         <div
-            className="bg-background w-screen h-screen flex flex-col relative overflow-hidden bg-cover"
+            className="bg-background1 w-screen h-screen flex flex-col relative overflow-hidden bg-cover"
             ref={screenRef}
         >
             <AppWindow

@@ -4,7 +4,8 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                background: "url('/pink.webp')",
+                background: "url('/background-1.avif')", //https://unsplash.com/photos/photo-of-mountain-ruWkmt3nU58
+                background1: "url('/background-1.avif')", //https://unsplash.com/photos/photo-of-mountain-ruWkmt3nU58
             },
         },
     },
