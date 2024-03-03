@@ -22,7 +22,7 @@ const AppWindow = ({
 
     return (
         <motion.div
-            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col z-20 text-white"
+            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col z-20 text-white select-none"
             style={{ width: width, height: height }}
             drag
             dragControls={controls}
@@ -37,7 +37,7 @@ const AppWindow = ({
                     controls.start(e);
                 }}
             >
-                <div className="flex flex-row">
+                <div className="flex flex-row pointer-events-none">
                     <img src={appIcon} alt="Logo" width={28} height={28} />
                     {appName}
                 </div>
@@ -45,7 +45,16 @@ const AppWindow = ({
                     <a href={appUrl} target="_blank" className="items-center">
                         <MdOutlineOpenInNew size={28} />
                     </a>
-                    <MdClose size={28} />
+                    <div
+                        className="cursor-pointer"
+                        onClick={() => {
+                            console.error(
+                                "You have not implemented closing yet!!!"
+                            );
+                        }}
+                    >
+                        <MdClose size={28} />
+                    </div>
                 </div>
             </div>
             <iframe
