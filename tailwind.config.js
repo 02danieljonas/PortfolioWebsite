@@ -4,7 +4,7 @@ export default {
     theme: {
         extend: {
             backgroundImage: {
-                background: "url('/background.jpg')",
+                background: "url('/pink.webp')",
             },
         },
     },
@@ -18,7 +18,7 @@ export default {
         "left-0",
         "text-2xl",
         "text-3xl",
-        { pattern: /block/, variants: ["group-hover"] }
+        { pattern: /block/, variants: ["group-hover"] },
     ],
     plugins: [],
 };
