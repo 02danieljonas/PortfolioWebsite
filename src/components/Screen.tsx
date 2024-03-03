@@ -18,6 +18,16 @@ const Screen = () => {
                 appName={"Example App"}
                 appUrl={"https://example.com/"}
             />
+
+            <AppWindow
+                width="400px"
+                height="500px"
+                screenRef={screenRef}
+                appIcon={"https://danieljonas.dev/assets/Logo.baf2f7b5.svg"}
+                appName={"My Portfolio"}
+                appUrl={"https://danieljonas.dev/"}
+            />
+
             <div className="w-full flex-auto h-5 p-4">
                 <span className="grid px-1 gap-x-8 gap-y-4 grid-cols-[repeat(auto-fit,minmax(3rem,1fr))] grid-flow-row">
                     <AppShortcut

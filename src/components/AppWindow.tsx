@@ -22,7 +22,7 @@ const AppWindow = ({
 
     return (
         <motion.div
-            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col z-30 text-white"
+            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col z-20 text-white"
             style={{ width: width, height: height }}
             drag
             dragControls={controls}
@@ -45,10 +45,15 @@ const AppWindow = ({
                     <a href={appUrl} target="_blank" className="items-center">
                         <MdOutlineOpenInNew size={28} />
                     </a>
-                    <MdClose size={28}/>
+                    <MdClose size={28} />
                 </div>
             </div>
-            <iframe src={appUrl} className="flex-auto focus:outline-none" />
+            <iframe
+                src={appUrl}
+                allowFullScreen={false}
+                title={`iframe for app: ${appName}`}
+                className="flex-auto focus:outline-none"
+            />
         </motion.div>
     );
 };
