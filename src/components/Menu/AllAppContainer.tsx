@@ -1,12 +1,12 @@
 import AppShortcut from "../AppShortcut";
-import App from "../types/App.interface";
+import useAppContext from "../context/useAppContext";
 
 interface AllAppContainerProps {
     search: string;
 }
 
 const AllAppContainer = ({ search }: AllAppContainerProps) => {
-    const appList: App[] = [];
+    const { appList } = useAppContext();
 
     const filteredApps = appList.filter((app) =>
         app.name.toLowerCase().includes(search.trim().toLowerCase())
