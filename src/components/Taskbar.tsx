@@ -13,7 +13,7 @@ const Taskbar = () => {
                     setIsMenuActive(false);
                 }}
             />
-            <div className="bg-opacity-65 bg-cyan-500 w-full h-14 flex justify-between relative">
+            <div className="bg-opacity-65 bg-cyan-500 w-full h-14 flex justify-between relative z-40">
                 <div
                     className="absolute bottom-full z-50"
                     style={{ display: isMenuActive ? "initial" : "none" }}

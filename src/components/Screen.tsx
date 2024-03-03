@@ -1,9 +1,23 @@
+import { useRef } from "react";
 import AppShortcut from "./AppShortcut";
+import AppWindow from "./AppWindow";
 import Taskbar from "./Taskbar";
 
 const Screen = () => {
+    const screenRef = useRef<HTMLDivElement>(null);
     return (
-        <div className="bg-background w-screen h-screen flex flex-col">
+        <div
+            className="bg-background w-screen h-screen flex flex-col relative overflow-hidden"
+            ref={screenRef}
+        >
+            <AppWindow
+                width="400px"
+                height="500px"
+                screenRef={screenRef}
+                appIcon={"/app-icons/example.jpg"}
+                appName={"Example App"}
+                appUrl={"https://example.com/"}
+            />
             <div className="w-full flex-auto h-5 p-4">
                 <span className="grid px-1 gap-x-8 gap-y-4 grid-cols-[repeat(auto-fit,minmax(3rem,1fr))] grid-flow-row">
                     <AppShortcut
