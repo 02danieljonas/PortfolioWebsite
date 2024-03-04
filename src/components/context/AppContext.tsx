@@ -7,13 +7,23 @@ interface AppContext {
     openAppsList: number[];
     closeApp: (id: number) => void;
     openApp: (id: number) => void;
+    appWindowLRU: number[];
+    appendAppWindowLRU: (id: number) => void;
 }
 
 export const AppContext = createContext<AppContext>({
     appList: [],
     openAppsList: [],
-    closeApp: () => null,
-    openApp: () => null,
+    appWindowLRU: [],
+    closeApp: () => {
+        throw new Error("closeApp function not implemented.");
+    },
+    openApp: () => {
+        throw new Error("openApp function not implemented.");
+    },
+    appendAppWindowLRU: () => {
+        throw new Error("updateAppWindowLRU function not implemented.");
+    },
 });
 
 interface AppContextProviderProps {
@@ -24,6 +34,28 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     const [appList, setAppList] = useState<App[]>([]);
 
     const [openAppsList, setOpenAppsList] = useState<number[]>([]);
+
+    const [appWindowLRU, setAppWindowLRU] = useState<number[]>([]);
+
+    const appendAppWindowLRU = (id: number) => {
+        const updatedAppWindowLRU = appWindowLRU.filter(
+            (appId) => appId !== id
+        );
+
+        if (updatedAppWindowLRU.length > 9) {
+            updatedAppWindowLRU.pop();
+        }
+        setAppWindowLRU([id, ...updatedAppWindowLRU]);
+    };
+
+    const removeAppWindowLRU = (id: number) => {
+        const updatedAppWindowLRU = appWindowLRU.filter(
+            (appId) => appId !== id
+        );
+        setAppWindowLRU([...updatedAppWindowLRU]);
+    };
+
+    console.log(appWindowLRU);
 
     useEffect(() => {
         const processedApps: App[] = Apps.map((app, index) => {
@@ -37,15 +69,24 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
             (appId) => appId !== id
         );
         setOpenAppsList(updatedOpenAppsList);
+        removeAppWindowLRU(id);
     };
 
     const openApp = (id: number) => {
+        appendAppWindowLRU(id);
         if (!openAppsList.includes(id)) {
             setOpenAppsList([...openAppsList, id]);
         }
     };
 
-    const AppValue = { appList, openAppsList, closeApp, openApp };
+    const AppValue = {
+        appList,
+        openAppsList,
+        closeApp,
+        openApp,
+        appWindowLRU,
+        appendAppWindowLRU,
+    };
 
     return (
         <AppContext.Provider value={AppValue}>

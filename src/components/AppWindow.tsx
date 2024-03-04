@@ -12,18 +12,31 @@ interface AppWindowProps {
 
 const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
     const controls = useDragControls();
-    const { closeApp } = useAppContext();
+    const { closeApp, appendAppWindowLRU, appWindowLRU } = useAppContext();
 
     return (
         <motion.div
-            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col z-20 text-white select-none"
-            style={{ width: width, height: height }}
+            className="bg-gray-400 absolute rounded overflow-hidden flex flex-col text-white select-none"
+            style={{
+                width: width,
+                height: height,
+                zIndex: 20 + (10 - appWindowLRU.indexOf(appInfo.id)),
+            }}
             drag
             dragControls={controls}
             dragConstraints={screenRef}
             dragElastic={1}
             dragMomentum={false}
             dragListener={false}
+            onClick={(e) => {
+                if (
+                    e.target instanceof HTMLElement &&
+                    e.target.classList.contains("do-not-update-appWindowLRU")
+                ) {
+                    return;
+                }
+                appendAppWindowLRU(appInfo.id);
+            }}
         >
             <div
                 className="bg-gray-500 h-7 flex justify-between"
@@ -44,12 +57,12 @@ const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
                         <MdOutlineOpenInNew size={28} />
                     </a>
                     <div
-                        className="cursor-pointer"
+                        className="cursor-pointer do-not-update-appWindowLRU"
                         onClick={() => {
                             closeApp(appInfo.id);
                         }}
                     >
-                        <MdClose size={28} />
+                        <MdClose size={28} className="pointer-events-none" />
                     </div>
                 </div>
             </div>
