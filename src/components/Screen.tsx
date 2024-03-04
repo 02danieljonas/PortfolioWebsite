@@ -11,7 +11,7 @@ const Screen = () => {
 
     return (
         <div
-            className="bg-background1 w-screen h-screen flex flex-col relative overflow-hidden bg-cover"
+            className="bg-background1 w-screen h-screen flex flex-col l relative overflow-hidden bg-cover"
             ref={screenRef}
         >
             {openAppsList.map((e) => {
@@ -26,17 +26,8 @@ const Screen = () => {
                 );
             })}
 
-            {/* <AppWindow
-                width="400px"
-                height="500px"
-                screenRef={screenRef}
-                appIcon={"https://danieljonas.dev/assets/Logo.baf2f7b5.svg"}
-                appName={"My Portfolio"}
-                appUrl={"https://danieljonas.dev/"}
-            /> */}
-
-            <div className="w-full flex-auto h-5 p-4">
-                <span className="grid px-1 gap-x-8 gap-y-4 grid-cols-[repeat(auto-fit,minmax(3rem,1fr))] grid-flow-row">
+            <div className="w-full h-[calc(100%-3.5rem)] p-6 overflow-hidden">
+                <span className="h-full flex px-1 gap-x-8 gap-y-4 flex-wrap flex-col items-start place-content-start">
                     {filteredApps.map((el) => (
                         <AppShortcut appInfo={el} key={el.id} />
                     ))}
