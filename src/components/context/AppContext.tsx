@@ -9,6 +9,8 @@ import App from "../types/App.interface";
 import Apps from "./appList.json";
 import Position from "../types/Position.interface";
 
+type SingleSelectedApp = null | number;
+
 interface AppContext {
     appList: App[];
     openAppsList: number[];
@@ -24,6 +26,10 @@ interface AppContext {
     setIsSelectionActive: React.Dispatch<SetStateAction<boolean>>;
     endPos: Position;
     setEndPos: React.Dispatch<React.SetStateAction<Position>>;
+    singleSelectedApp: SingleSelectedApp;
+    setSingleSelectedApp: React.Dispatch<
+        React.SetStateAction<SingleSelectedApp>
+    >;
 }
 
 export const AppContext = createContext<AppContext>({
@@ -33,6 +39,7 @@ export const AppContext = createContext<AppContext>({
     isMenuActive: false,
     startPos: { x: 0, y: 0 },
     endPos: { x: 0, y: 0 },
+    singleSelectedApp: null,
     isSelectionActive: false,
     setIsMenuActive: () => {
         throw new Error("setIsMenuActive function not implemented.");
@@ -55,6 +62,9 @@ export const AppContext = createContext<AppContext>({
     setEndPos: () => {
         throw new Error("setEndPos function not implemented.");
     },
+    setSingleSelectedApp: () => {
+        throw new Error("setSingleSelectedApp function not implemented.");
+    },
 });
 
 interface AppContextProviderProps {
@@ -62,6 +72,9 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+    const [singleSelectedApp, setSingleSelectedApp] =
+        useState<SingleSelectedApp>(null);
+
     const [startPos, setStartPos] = useState<Position>({ x: 0, y: 0 });
     const [isSelectionActive, setIsSelectionActive] = useState<boolean>(false);
     const [endPos, setEndPos] = useState<Position>({ x: 0, y: 0 });
@@ -130,6 +143,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setIsSelectionActive,
         endPos,
         setEndPos,
+        singleSelectedApp,
+        setSingleSelectedApp,
     };
 
     return (

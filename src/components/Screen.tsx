@@ -32,7 +32,7 @@ const Screen = () => {
             <div className="w-full h-[calc(100%-3.5rem)] p-6 overflow-hidden">
                 <span className="h-full flex px-1 gap-x-8 gap-y-4 flex-wrap flex-col items-start place-content-start">
                     {filteredApps.map((el) => (
-                        <AppShortcut appInfo={el} key={el.id} />
+                        <AppShortcut appInfo={el} key={el.id} isHighlightable />
                     ))}
                 </span>
             </div>

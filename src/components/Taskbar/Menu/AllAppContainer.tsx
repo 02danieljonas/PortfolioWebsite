@@ -15,7 +15,11 @@ const AllAppContainer = ({ search }: AllAppContainerProps) => {
     return (
         <div className="flex flex-wrap p-5 gap-x-8 gap-y-4">
             {filteredApps.map((app) => (
-                <AppShortcut appInfo={app} key={app.id} />
+                <AppShortcut
+                    appInfo={app}
+                    key={app.id}
+                    isHighlightable={false}
+                />
             ))}
         </div>
     );
