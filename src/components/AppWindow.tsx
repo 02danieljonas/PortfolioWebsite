@@ -1,24 +1,18 @@
 import { MdOutlineOpenInNew, MdClose } from "react-icons/md";
 import { motion, useDragControls } from "framer-motion";
+import useAppContext from "./context/useAppContext";
+import App from "./types/App.interface";
 
 interface AppWindowProps {
-    appIcon: string;
-    appName: string;
-    appUrl: string;
+    appInfo: App;
     screenRef: React.RefObject<HTMLDivElement>;
     width: string;
     height: string;
 }
 
-const AppWindow = ({
-    appIcon,
-    appUrl,
-    appName,
-    screenRef,
-    width,
-    height,
-}: AppWindowProps) => {
+const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
     const controls = useDragControls();
+    const { closeApp } = useAppContext();
 
     return (
         <motion.div
@@ -38,19 +32,21 @@ const AppWindow = ({
                 }}
             >
                 <div className="flex flex-row pointer-events-none">
-                    <img src={appIcon} alt="Logo" width={28} height={28} />
-                    {appName}
+                    <img src={appInfo.img} alt="Logo" width={28} height={28} />
+                    {}
                 </div>
                 <div className="flex flex-row">
-                    <a href={appUrl} target="_blank" className="items-center">
+                    <a
+                        href={appInfo.url}
+                        target="_blank"
+                        className="items-center"
+                    >
                         <MdOutlineOpenInNew size={28} />
                     </a>
                     <div
                         className="cursor-pointer"
                         onClick={() => {
-                            console.error(
-                                "You have not implemented closing yet!!!"
-                            );
+                            closeApp(appInfo.id);
                         }}
                     >
                         <MdClose size={28} />
@@ -58,9 +54,9 @@ const AppWindow = ({
                 </div>
             </div>
             <iframe
-                src={appUrl}
+                src={appInfo.url}
                 allowFullScreen={false}
-                title={`iframe for app: ${appName}`}
+                title={`iframe for app: ${appInfo.name}`}
                 className="flex-auto focus:outline-none"
             />
         </motion.div>

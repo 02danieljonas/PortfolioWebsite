@@ -1,12 +1,5 @@
 [
     {
-        "name": "Example",
-        "tags": ["menu-pinned", "screen"],
-        "path": "",
-        "img": "/app-icons/example.jpg",
-        "url": "https://example.com/"
-    },
-    {
         "name": "Microsoft Word",
         "tags": ["screen"],
         "path": "",
@@ -19,6 +12,13 @@
         "path": "",
         "img": "",
         "url": ""
+    },
+    {
+        "name": "Example",
+        "tags": ["menu-pinned", "screen"],
+        "path": "",
+        "img": "/app-icons/example.jpg",
+        "url": "https://example.com/"
     },
     {
         "name": "VS Code",
@@ -61,6 +61,13 @@
         "path": "",
         "img": "",
         "url": ""
+    },
+    {
+        "name": "My Portfolio Website",
+        "tags": ["screen"],
+        "path": "",
+        "img": "https://danieljonas.dev/assets/Logo.baf2f7b5.svg",
+        "url": "https://danieljonas.dev/"
     },
     {
         "name": "Youtube",

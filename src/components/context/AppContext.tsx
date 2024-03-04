@@ -5,7 +5,7 @@ import Apps from "./appList.json";
 interface AppContext {
     appList: App[];
     openAppsList: number[];
-    closeApp: (id:number) => void;
+    closeApp: (id: number) => void;
     openApp: (id: number) => void;
 }
 
@@ -23,6 +23,8 @@ interface AppContextProviderProps {
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     const [appList, setAppList] = useState<App[]>([]);
 
+    const [openAppsList, setOpenAppsList] = useState<number[]>([]);
+
     useEffect(() => {
         const processedApps: App[] = Apps.map((app, index) => {
             return { ...app, id: index };
@@ -30,15 +32,16 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setAppList(processedApps);
     }, []);
 
-    const [openAppsList, setOpenAppsList] = useState<number[]>([]);
-
     const closeApp = (id: number) => {
+        console.log(`Closing ${id} ${appList[id].name}`);
+        console.log(`Before: ${openAppsList}`);
         const updatedOpenAppsList = openAppsList.filter(
-            (_, index) => index !== id
+            (appId) => appId !== id
         );
         setOpenAppsList(updatedOpenAppsList);
+        console.log(`After: ${openAppsList}`);
     };
-    
+
     const openApp = (id: number) => {
         if (!openAppsList.includes(id)) {
             setOpenAppsList([...openAppsList, id]);
