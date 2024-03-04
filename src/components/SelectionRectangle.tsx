@@ -17,7 +17,7 @@ const SelectionRectangle = ({ startPos, endPos }: SelectionRectangleProps) => {
     const bigY = Math.max(startPos.y, endPos.y);
     return (
         <div
-            className="fixed bg-cyan-500 opacity-40 border-2 border-blue-950 pointer-events-none"
+            className="fixed bg-cyan-500 opacity-40 border-2 border-blue-950 pointer-events-none z-[1]"
             style={{
                 top: smallY,
                 left: smallX,
