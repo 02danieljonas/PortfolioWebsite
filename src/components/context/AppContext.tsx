@@ -33,13 +33,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     }, []);
 
     const closeApp = (id: number) => {
-        console.log(`Closing ${id} ${appList[id].name}`);
-        console.log(`Before: ${openAppsList}`);
         const updatedOpenAppsList = openAppsList.filter(
             (appId) => appId !== id
         );
         setOpenAppsList(updatedOpenAppsList);
-        console.log(`After: ${openAppsList}`);
     };
 
     const openApp = (id: number) => {
