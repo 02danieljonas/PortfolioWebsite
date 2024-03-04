@@ -59,7 +59,15 @@ const AppShortcut = ({ appInfo, isHighlightable }: AppShortcutProps) => {
             setIsThisAppSelected(isInsidePoints);
         };
         handleResize();
-    }, [singleSelectedApp, appInfo.id, isHighlightable, smallX, bigX, smallY, bigY]);
+    }, [
+        singleSelectedApp,
+        appInfo.id,
+        isHighlightable,
+        smallX,
+        bigX,
+        smallY,
+        bigY,
+    ]);
 
     return (
         <div

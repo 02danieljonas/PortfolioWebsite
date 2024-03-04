@@ -28,6 +28,7 @@ const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
             dragElastic={1}
             dragMomentum={false}
             dragListener={false}
+            onMouseDown={() => appendAppWindowLRU(appInfo.id)}
             onClick={(e) => {
                 if (
                     e.target instanceof HTMLElement &&
@@ -40,13 +41,10 @@ const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
         >
             <div
                 className="bg-gray-500 h-7 flex justify-between"
-                onPointerDown={(e) => {
-                    controls.start(e);
-                }}
+                onPointerDown={(e) => controls.start(e)}
             >
                 <div className="flex flex-row pointer-events-none">
                     <img src={appInfo.img} alt="Logo" width={28} height={28} />
-                    {}
                 </div>
                 <div className="flex flex-row">
                     <a
