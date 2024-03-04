@@ -89,5 +89,12 @@
         "path": "",
         "img": "/app-icons/placeholder.webp",
         "url": ""
+    },
+    {
+        "name": "A really long name to see what happens",
+        "tags": ["screen"],
+        "path": "",
+        "img": "/app-icons/placeholder.webp",
+        "url": ""
     }
 ]
