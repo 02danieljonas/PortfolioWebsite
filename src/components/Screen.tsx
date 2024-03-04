@@ -2,8 +2,13 @@ import { useRef } from "react";
 import AppShortcut from "./AppShortcut";
 import AppWindow from "./AppWindow";
 import Taskbar from "./Taskbar";
+import useAppContext from "./context/useAppContext";
 const Screen = () => {
     const screenRef = useRef<HTMLDivElement>(null);
+    const { appList } = useAppContext();
+
+    const filteredApps = appList.filter((app) => app.tags.includes("screen"));
+
     return (
         <div
             className="bg-background1 w-screen h-screen flex flex-col relative overflow-hidden bg-cover"
@@ -29,153 +34,9 @@ const Screen = () => {
 
             <div className="w-full flex-auto h-5 p-4">
                 <span className="grid px-1 gap-x-8 gap-y-4 grid-cols-[repeat(auto-fit,minmax(3rem,1fr))] grid-flow-row">
-                    <AppShortcut
-                        name="App 1"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 2"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 3"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 4"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 5"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 6"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 7"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 8"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 9"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 10"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 11"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 12"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 13"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 14"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 15"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 16"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 17"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 18"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 19"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="App 20"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={"https://example.com/"}
-                    />
-                    <AppShortcut
-                        name="A really long name to see what happendsdawdadw adaw??"
-                        tags={[]}
-                        path={""}
-                        img={""}
-                        url={""}
-                    />
+                    {filteredApps.map((el) => (
+                        <AppShortcut appInfo={el} />
+                    ))}
                 </span>
             </div>
             <Taskbar />
