@@ -34,31 +34,34 @@ const SelectionRectangleContainer = () => {
     const [endPos, setEndPos] = useState<Position>({ x: 0, y: 0 });
 
     return (
-        <div
-            className="absolute top-0 left-0 right-0 bottom-0 z-0"
-            onMouseDown={(e) => {
-                setIsSelectionActive(true);
-                startPos.x = e.nativeEvent.offsetX;
-                startPos.y = e.nativeEvent.offsetY;
-                setStartPos({ ...startPos });
-                setEndPos({ ...startPos });
-            }}
-            onMouseMove={(e) => {
-                if (!isSelectionActive) {
-                    return;
-                }
-                endPos.x = e.nativeEvent.offsetX;
-                endPos.y = e.nativeEvent.offsetY;
-                setEndPos({ ...endPos });
-            }}
-            onMouseUp={() => {
-                setIsSelectionActive(false);
-            }}
-        >
+        <>
             {isSelectionActive && (
                 <SelectionRectangle startPos={startPos} endPos={endPos} />
             )}
-        </div>
+            <div
+                className={`absolute top-0 left-0 right-0 bottom-0 ${
+                    isSelectionActive ? "z-[100]" : "z-0"
+                } `}
+                onMouseDown={(e) => {
+                    setIsSelectionActive(true);
+                    startPos.x = e.nativeEvent.offsetX;
+                    startPos.y = e.nativeEvent.offsetY;
+                    setStartPos({ ...startPos });
+                    setEndPos({ ...startPos });
+                }}
+                onMouseMove={(e) => {
+                    if (!isSelectionActive) {
+                        return;
+                    }
+                    endPos.x = e.nativeEvent.offsetX;
+                    endPos.y = e.nativeEvent.offsetY;
+                    setEndPos({ ...endPos });
+                }}
+                onMouseUp={() => {
+                    setIsSelectionActive(false);
+                }}
+            ></div>
+        </>
     );
 };
 
