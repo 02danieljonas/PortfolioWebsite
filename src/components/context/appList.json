@@ -3,14 +3,14 @@
         "name": "Microsoft Word",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Google Chrome",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
@@ -24,42 +24,42 @@
         "name": "VS Code",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "File Explorer",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Firefox",
         "tags": [],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Calculator",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "CodeClash",
         "tags": [],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Memory Game",
         "tags": [],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
@@ -73,21 +73,21 @@
         "name": "Youtube",
         "tags": [],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Github",
         "tags": [],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     },
     {
         "name": "Minecraft",
         "tags": ["screen"],
         "path": "",
-        "img": "",
+        "img": "/app-icons/placeholder.webp",
         "url": ""
     }
 ]
