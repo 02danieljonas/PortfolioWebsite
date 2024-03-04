@@ -1,6 +1,13 @@
-import { createContext, useState, ReactNode, useEffect } from "react";
+import {
+    createContext,
+    useState,
+    ReactNode,
+    useEffect,
+    SetStateAction,
+} from "react";
 import App from "../types/App.interface";
 import Apps from "./appList.json";
+import Position from "../types/Position.interface";
 
 interface AppContext {
     appList: App[];
@@ -11,6 +18,12 @@ interface AppContext {
     openApp: (id: number) => void;
     appWindowLRU: number[];
     appendAppWindowLRU: (id: number) => void;
+    startPos: Position;
+    setStartPos: React.Dispatch<React.SetStateAction<Position>>;
+    isSelectionActive: boolean;
+    setIsSelectionActive: React.Dispatch<SetStateAction<boolean>>;
+    endPos: Position;
+    setEndPos: React.Dispatch<React.SetStateAction<Position>>;
 }
 
 export const AppContext = createContext<AppContext>({
@@ -18,6 +31,9 @@ export const AppContext = createContext<AppContext>({
     openAppsList: [],
     appWindowLRU: [],
     isMenuActive: false,
+    startPos: { x: 0, y: 0 },
+    endPos: { x: 0, y: 0 },
+    isSelectionActive: false,
     setIsMenuActive: () => {
         throw new Error("setIsMenuActive function not implemented.");
     },
@@ -28,7 +44,16 @@ export const AppContext = createContext<AppContext>({
         throw new Error("openApp function not implemented.");
     },
     appendAppWindowLRU: () => {
-        throw new Error("updateAppWindowLRU function not implemented.");
+        throw new Error("appendAppWindowLRU function not implemented.");
+    },
+    setStartPos: () => {
+        throw new Error("setStartPos function not implemented.");
+    },
+    setIsSelectionActive: () => {
+        throw new Error("setIsSelectionActive function not implemented.");
+    },
+    setEndPos: () => {
+        throw new Error("setEndPos function not implemented.");
     },
 });
 
@@ -37,6 +62,10 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+    const [startPos, setStartPos] = useState<Position>({ x: 0, y: 0 });
+    const [isSelectionActive, setIsSelectionActive] = useState<boolean>(false);
+    const [endPos, setEndPos] = useState<Position>({ x: 0, y: 0 });
+
     const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
 
     const [appList, setAppList] = useState<App[]>([]);
@@ -95,6 +124,12 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         appendAppWindowLRU,
         isMenuActive,
         setIsMenuActive,
+        startPos,
+        setStartPos,
+        isSelectionActive,
+        setIsSelectionActive,
+        endPos,
+        setEndPos,
     };
 
     return (

@@ -1,9 +1,5 @@
-import { useState } from "react";
-
-interface Position {
-    x: number;
-    y: number;
-}
+import Position from "./types/Position.interface";
+import useAppContext from "./context/useAppContext";
 
 interface SelectionRectangleProps {
     startPos: Position;
@@ -29,9 +25,14 @@ const SelectionRectangle = ({ startPos, endPos }: SelectionRectangleProps) => {
 };
 
 const SelectionRectangleContainer = () => {
-    const [startPos, setStartPos] = useState<Position>({ x: 0, y: 0 });
-    const [isSelectionActive, setIsSelectionActive] = useState<boolean>(true);
-    const [endPos, setEndPos] = useState<Position>({ x: 0, y: 0 });
+    const {
+        startPos,
+        endPos,
+        isSelectionActive,
+        setIsSelectionActive,
+        setStartPos,
+        setEndPos,
+    } = useAppContext();
 
     return (
         <>
