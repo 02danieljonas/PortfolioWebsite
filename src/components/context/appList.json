@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Example",
+        "tags": ["menu-pinned", "screen"],
+        "path": "",
+        "img": "/app-icons/example.jpg",
+        "url": "https://example.com/"
+    },
+    {
+        "name": "Microsoft Word",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Google Chrome",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "VS Code",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "File Explorer",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Firefox",
+        "tags": [],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Calculator",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "CodeClash",
+        "tags": [],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Memory Game",
+        "tags": [],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Youtube",
+        "tags": [],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Github",
+        "tags": [],
+        "path": "",
+        "img": "",
+        "url": ""
+    },
+    {
+        "name": "Minecraft",
+        "tags": ["screen"],
+        "path": "",
+        "img": "",
+        "url": ""
+    }
+]

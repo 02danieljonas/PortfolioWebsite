@@ -1,14 +1,19 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import App from "../types/App.interface";
+import Apps from "./appList.json";
 
 interface AppContext {
     appList: App[];
-    // setAppList: React.Dispatch<React.SetStateAction<App[]>>;
+    openAppsList: number[];
+    closeApp: (id:number) => void;
+    openApp: (id: number) => void;
 }
 
 export const AppContext = createContext<AppContext>({
     appList: [],
-    // setAppList: () => {},
+    openAppsList: [],
+    closeApp: () => null,
+    openApp: () => null,
 });
 
 interface AppContextProviderProps {
@@ -16,73 +21,31 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
-    const [appList] = useState<App[]>([
-        {
-            id: 1,
-            name: "Example",
-            tags: ["menu-pinned", "screen"],
-            path: "",
-            img: "/app-icons/example.jpg",
-            url: "https://example.com/",
-        },
-        {
-            id: 2,
-            name: "Microsoft Word",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-        {
-            id: 3,
-            name: "Google Chrome",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-        {
-            id: 4,
-            name: "VS Code",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-        {
-            id: 5,
-            name: "File Explorer",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-        { id: 6, name: "Resume", tags: [], path: "", img: "", url: "" },
-        { id: 7, name: "Firefox", tags: [], path: "", img: "", url: "" },
-        { id: 8, name: "Notes", tags: [], path: "", img: "", url: "" },
-        {
-            id: 9,
-            name: "Calculator",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-        { id: 10, name: "CodeClash", tags: [], path: "", img: "", url: "" },
-        { id: 11, name: "Memory Game", tags: [], path: "", img: "", url: "" },
-        { id: 12, name: "Youtube", tags: [], path: "", img: "", url: "" },
-        { id: 13, name: "Github", tags: [], path: "", img: "", url: "" },
-        {
-            id: 14,
-            name: "Minecraft",
-            tags: ["screen"],
-            path: "",
-            img: "",
-            url: "",
-        },
-    ]);
+    const [appList, setAppList] = useState<App[]>([]);
 
-    const AppValue = { appList };
+    useEffect(() => {
+        const processedApps: App[] = Apps.map((app, index) => {
+            return { ...app, id: index };
+        });
+        setAppList(processedApps);
+    }, []);
+
+    const [openAppsList, setOpenAppsList] = useState<number[]>([]);
+
+    const closeApp = (id: number) => {
+        const updatedOpenAppsList = openAppsList.filter(
+            (_, index) => index !== id
+        );
+        setOpenAppsList(updatedOpenAppsList);
+    };
+    
+    const openApp = (id: number) => {
+        if (!openAppsList.includes(id)) {
+            setOpenAppsList([...openAppsList, id]);
+        }
+    };
+
+    const AppValue = { appList, openAppsList, closeApp, openApp };
 
     return (
         <AppContext.Provider value={AppValue}>
