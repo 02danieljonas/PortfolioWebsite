@@ -1,5 +1,5 @@
-import AppShortcut from "../AppShortcut";
-import useAppContext from "../context/useAppContext";
+import AppShortcut from "../../AppShortcut";
+import useAppContext from "../../context/useAppContext";
 
 interface AllAppContainerProps {
     search: string;

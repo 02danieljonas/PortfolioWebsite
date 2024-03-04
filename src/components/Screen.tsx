@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import AppShortcut from "./AppShortcut";
 import AppWindow from "./AppWindow";
-import Taskbar from "./Taskbar";
+import Taskbar from "./Taskbar/Taskbar";
 import useAppContext from "./context/useAppContext";
 const Screen = () => {
     const screenRef = useRef<HTMLDivElement>(null);
