@@ -37,10 +37,9 @@ const SelectionRectangleContainer = () => {
 
     return (
         <>
-            {/* {isSelectionActive && (
+            {isSelectionActive && (
                 <SelectionRectangle startPos={startPos} endPos={endPos} />
-                )} */}
-            <SelectionRectangle startPos={startPos} endPos={endPos} />
+            )}
             <div
                 className={`absolute top-0 left-0 right-0 bottom-0 ${
                     isSelectionActive ? "z-[100]" : "z-0"
