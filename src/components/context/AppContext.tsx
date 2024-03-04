@@ -5,6 +5,8 @@ import Apps from "./appList.json";
 interface AppContext {
     appList: App[];
     openAppsList: number[];
+    isMenuActive: boolean;
+    setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
     closeApp: (id: number) => void;
     openApp: (id: number) => void;
     appWindowLRU: number[];
@@ -15,6 +17,10 @@ export const AppContext = createContext<AppContext>({
     appList: [],
     openAppsList: [],
     appWindowLRU: [],
+    isMenuActive: false,
+    setIsMenuActive: () => {
+        throw new Error("setIsMenuActive function not implemented.");
+    },
     closeApp: () => {
         throw new Error("closeApp function not implemented.");
     },
@@ -31,7 +37,16 @@ interface AppContextProviderProps {
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+    const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
+
     const [appList, setAppList] = useState<App[]>([]);
+
+    useEffect(() => {
+        const processedApps: App[] = Apps.map((app, index) => {
+            return { ...app, id: index };
+        });
+        setAppList(processedApps);
+    }, []);
 
     const [openAppsList, setOpenAppsList] = useState<number[]>([]);
 
@@ -55,15 +70,6 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         setAppWindowLRU([...updatedAppWindowLRU]);
     };
 
-    console.log(appWindowLRU);
-
-    useEffect(() => {
-        const processedApps: App[] = Apps.map((app, index) => {
-            return { ...app, id: index };
-        });
-        setAppList(processedApps);
-    }, []);
-
     const closeApp = (id: number) => {
         const updatedOpenAppsList = openAppsList.filter(
             (appId) => appId !== id
@@ -73,6 +79,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     };
 
     const openApp = (id: number) => {
+        setIsMenuActive(false);
         appendAppWindowLRU(id);
         if (!openAppsList.includes(id)) {
             setOpenAppsList([...openAppsList, id]);
@@ -86,6 +93,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         openApp,
         appWindowLRU,
         appendAppWindowLRU,
+        isMenuActive,
+        setIsMenuActive,
     };
 
     return (

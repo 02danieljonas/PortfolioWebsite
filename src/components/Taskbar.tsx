@@ -1,8 +1,8 @@
-import { useState } from "react";
 import Menu from "./Menu/Menu";
+import useAppContext from "./context/useAppContext";
 
 const Taskbar = () => {
-    const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
+    const { isMenuActive, setIsMenuActive } = useAppContext();
 
     return (
         <>
