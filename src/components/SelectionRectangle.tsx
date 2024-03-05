@@ -44,6 +44,10 @@ const SelectionRectangleContainer = () => {
                 className={`absolute top-0 left-0 right-0 bottom-0 ${
                     isSelectionActive ? "z-[100]" : "z-0"
                 } `}
+                onContextMenu={(e) => {
+                    e.preventDefault();
+                    console.log("Right Click");
+                }}
                 onMouseDown={(e) => {
                     setSingleSelectedApp(null);
                     setIsSelectionActive(true);
