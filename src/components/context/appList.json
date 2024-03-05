@@ -4,97 +4,135 @@
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Google Chrome",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Example",
         "tags": ["menu-pinned", "screen"],
         "path": "",
         "img": "/app-icons/example.jpg",
-        "url": "https://example.com/"
+        "url": "https://example.com/",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "VS Code",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "File Explorer",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Firefox",
         "tags": [],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Calculator",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "CodeClash",
         "tags": [],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Memory Game",
         "tags": [],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "My Portfolio Website",
         "tags": ["screen"],
         "path": "",
         "img": "https://danieljonas.dev/assets/Logo.baf2f7b5.svg",
-        "url": "https://danieljonas.dev/"
+        "url": "https://danieljonas.dev/",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Youtube",
         "tags": [],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Github",
         "tags": [],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "Minecraft",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
     },
     {
         "name": "A really long name to see what happens",
         "tags": ["screen"],
         "path": "",
         "img": "/app-icons/placeholder.webp",
-        "url": ""
+        "url": "",
+        "width": 400,
+        "height": 500
+    },
+    {
+        "name": "Desktop",
+        "tags": ["screen"],
+        "path": "",
+        "img": "/app-icons/placeholder.webp",
+        "url": "/",
+        "width": 400,
+        "height": 500
+
     }
 ]

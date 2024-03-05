@@ -6,11 +6,9 @@ import App from "./types/App.interface";
 interface AppWindowProps {
     appInfo: App;
     screenRef: React.RefObject<HTMLDivElement>;
-    width: string;
-    height: string;
 }
 
-const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
+const AppWindow = ({ appInfo, screenRef }: AppWindowProps) => {
     const controls = useDragControls();
     const { closeApp, appendAppWindowLRU, appWindowLRU } = useAppContext();
 
@@ -18,8 +16,8 @@ const AppWindow = ({ appInfo, screenRef, width, height }: AppWindowProps) => {
         <motion.div
             className="bg-gray-400 absolute rounded overflow-hidden flex flex-col text-white select-none"
             style={{
-                width: width,
-                height: height,
+                width: `${appInfo.width}px`,
+                height: `${appInfo.height}px`,
                 zIndex: 20 + (10 - appWindowLRU.indexOf(appInfo.id)),
             }}
             drag

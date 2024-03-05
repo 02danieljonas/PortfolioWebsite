@@ -35,14 +35,18 @@ const TaskbarRight = () => {
     }
 
     return (
-        <div className="flex flex-row text-white text-right pr-4">
-            <Ticket />
-            {/* TODO fix centering on time and date */}
-            <div>
-                <h2>{time}</h2>
-                <h2>{date}</h2>
+        <>
+            <div className="fixed w-40 h-5 left-1/2 right-1/2">
+                <Ticket />
             </div>
-        </div>
+            <div className="flex flex-row text-white text-right pr-4">
+                {/* TODO fix centering on time and date */}
+                <div>
+                    <h2>{time}</h2>
+                    <h2>{date}</h2>
+                </div>
+            </div>
+        </>
     );
 };
 

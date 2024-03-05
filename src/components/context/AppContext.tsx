@@ -11,8 +11,13 @@ import Position from "../types/Position.interface";
 
 type SingleSelectedApp = null | number;
 
+// TODO merge startPos and endPos into a more cohesive variable
+// TODO merge setStartPos and setEndPos into a more cohesive function, my call it setSelectPos(x, y, 1), third variable represents if startPos or endPos should be modified
+
 interface AppContext {
     appList: App[];
+    visitorNumber: number;
+    isVNumLoading: boolean;
     openAppsList: number[];
     isMenuActive: boolean;
     setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,6 +39,8 @@ interface AppContext {
 
 export const AppContext = createContext<AppContext>({
     appList: [],
+    visitorNumber: 1,
+    isVNumLoading: true,
     openAppsList: [],
     appWindowLRU: [],
     isMenuActive: false,
@@ -83,8 +90,23 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     const [appList, setAppList] = useState<App[]>([]);
 
+    const [visitorNumber, setVisitorNumber] = useState<number>(1);
+    const [isVNumLoading, setIsVNumLoading] = useState(true);
+
+    useEffect(() => {
+        if (window.frameElement === null) {
+            setVisitorNumber(305);
+            setIsVNumLoading(false);
+        } else {
+            setVisitorNumber(0);
+            setIsVNumLoading(false);
+        }
+    }, []);
+
     useEffect(() => {
         const processedApps: App[] = Apps.map((app, index) => {
+            if (!app.height) app.height = 500;
+            if (!app.width) app.width = 400;
             return { ...app, id: index };
         });
         setAppList(processedApps);
@@ -130,6 +152,8 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
 
     const AppValue = {
         appList,
+        visitorNumber,
+        isVNumLoading,
         openAppsList,
         closeApp,
         openApp,

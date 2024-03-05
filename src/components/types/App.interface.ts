@@ -5,4 +5,6 @@ export default interface App {
     path: string;
     img: string;
     url: string;
+    width: number;
+    height: number;
 }
