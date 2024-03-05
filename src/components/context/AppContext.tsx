@@ -150,7 +150,7 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
         }
     };
 
-    const AppValue = {
+    const AppValue: AppContext = {
         appList,
         visitorNumber,
         isVNumLoading,
