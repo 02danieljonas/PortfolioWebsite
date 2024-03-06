@@ -1,10 +1,4 @@
-import {
-    createContext,
-    useState,
-    ReactNode,
-    useEffect,
-    SetStateAction,
-} from "react";
+import { createContext, useState, useEffect } from "react";
 import App from "../types/App.interface";
 import Apps from "./appList.json";
 import Position from "../types/Position.interface";
@@ -28,7 +22,7 @@ interface AppContext {
     startPos: Position;
     setStartPos: React.Dispatch<React.SetStateAction<Position>>;
     isSelectionActive: boolean;
-    setIsSelectionActive: React.Dispatch<SetStateAction<boolean>>;
+    setIsSelectionActive: React.Dispatch<React.SetStateAction<boolean>>;
     endPos: Position;
     setEndPos: React.Dispatch<React.SetStateAction<Position>>;
     singleSelectedApp: SingleSelectedApp;
@@ -75,7 +69,7 @@ export const AppContext = createContext<AppContext>({
 });
 
 interface AppContextProviderProps {
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 export const AppContextProvider = ({ children }: AppContextProviderProps) => {
@@ -96,11 +90,10 @@ export const AppContextProvider = ({ children }: AppContextProviderProps) => {
     useEffect(() => {
         if (window.frameElement === null) {
             setVisitorNumber(305);
-            setIsVNumLoading(false);
         } else {
             setVisitorNumber(0);
-            setIsVNumLoading(false);
         }
+        setIsVNumLoading(false);
     }, []);
 
     useEffect(() => {
