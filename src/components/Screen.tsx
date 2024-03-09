@@ -18,6 +18,7 @@ const Screen = () => {
         // TODO look into this for mouse pass through: http://web.archive.org/web/20160401052004/www.vinylfox.com/forwarding-mouse-events-through-layers/
         //TODO get the position of the click, then call document.elementFromPoint on the position of the click, simulate click on that element. 
         // TODO you could do this on every overlay
+        //! can't do this, The overlay would need to close before the document.elementFromPoint could capture the element underneath
         <>
             <div
                 ref={screenRef}
