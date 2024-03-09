@@ -1,5 +1,6 @@
 import Position from "./types/Position.interface";
 import useAppContext from "./context/useAppContext";
+import { useState } from "react";
 
 interface SelectionRectangleProps {
     startPos: Position;
@@ -34,19 +35,67 @@ const SelectionRectangleContainer = () => {
         setEndPos,
         setSingleSelectedApp,
     } = useAppContext();
+    const [isContextMenuActive, setIsContextMenuActive] =
+        useState<boolean>(false);
 
+    const [clickPosition, setClickPosition] = useState<Position>({
+        x: 0,
+        y: 0,
+    });
     return (
         <>
             {isSelectionActive && (
                 <SelectionRectangle startPos={startPos} endPos={endPos} />
             )}
             <div
+                className={`absolute z-50 top-0 bottom-0 right-0 left-0 bg-black opacity-10 ${
+                    isContextMenuActive || "hidden"
+                }`}
+                onClick={() => {
+                    console.log("Should hide");
+
+                    setIsContextMenuActive(false);
+                }}
+            ></div>
+            <div
+                className={`absolute rounded-lg bg-[#2c2c2c] p-10 text-white w-50 h-40 z-[51] ${
+                    isContextMenuActive || "hidden"
+                }`}
+                style={{
+                    top: clickPosition.y,
+                    left: clickPosition.x,
+                }}
+            >
+                <h1>You can right click again for normal functionality</h1>
+                Photo by{" "}
+                <a href="https://unsplash.com/@lucamicheli?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+                    Luca Micheli
+                </a>{" "}
+                on{" "}
+                <a href="https://unsplash.com/photos/photo-of-mountain-ruWkmt3nU58?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+                    Unsplash
+                </a>
+                <br />
+                <a
+                    href="https://unsplash.com/photos/photo-of-mountain-ruWkmt3nU58"
+                    target="_blank"
+                >
+                    Click here for background image
+                </a>
+                {/* <div>Click here for new background image</div> */}
+            </div>
+            <div
                 className={`absolute top-0 left-0 right-0 bottom-0 ${
                     isSelectionActive ? "z-[100]" : "z-0"
                 } `}
                 onContextMenu={(e) => {
                     e.preventDefault();
-                    console.log("Right Click");
+                    setIsContextMenuActive(true);
+                    setClickPosition({
+                        x: e.nativeEvent.offsetX,
+                        y: e.nativeEvent.offsetY,
+                    });
+                    console.log("Right Click on SR");
                 }}
                 onMouseDown={(e) => {
                     setSingleSelectedApp(null);
@@ -68,7 +117,7 @@ const SelectionRectangleContainer = () => {
                     setSingleSelectedApp(null);
                     setIsSelectionActive(false);
                 }}
-            ></div>
+            />
         </>
     );
 };
