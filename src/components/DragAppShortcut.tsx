@@ -1,13 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import useAppContext from "./context/useAppContext";
 import App from "./types/App.interface";
+import { DragControls, motion, useAnimationControls } from "framer-motion";
 
 interface AppShortcutProps {
     appInfo: App;
     isHighlightable: boolean;
+    controls: DragControls;
 }
 
-const AppShortcut = ({ appInfo, isHighlightable }: AppShortcutProps) => {
+const AppShortcut = ({
+    appInfo,
+    isHighlightable,
+    controls,
+}: AppShortcutProps) => {
     const {
         openApp,
         setSingleSelectedApp,
@@ -19,13 +25,25 @@ const AppShortcut = ({ appInfo, isHighlightable }: AppShortcutProps) => {
     const [isThisAppSelected, setIsThisAppSelected] = useState<boolean>(
         singleSelectedApp === appInfo.id
     );
+
     const appShortcutRef = useRef<HTMLDivElement>(null);
+
+    const animationControls = useAnimationControls();
+    const resetPosition = () => {
+        animationControls.set({
+            x: 0,
+            y: 0,
+        });
+    };
+    // TODO make dragging element work with multi select
+    //. on mouse down make the AppShortcut the main and every other selected element the child and have the child follow the main, letting the main be draggable
 
     // TODO modify this code so that either this is calculated in AppContext or startPos and endPos are use better
     const smallX = Math.min(startPos.x, endPos.x);
     const smallY = Math.min(startPos.y, endPos.y);
     const bigX = Math.max(startPos.x, endPos.x);
     const bigY = Math.max(startPos.y, endPos.y);
+
     useEffect(() => {
         if (!isHighlightable) {
             return;
@@ -70,7 +88,14 @@ const AppShortcut = ({ appInfo, isHighlightable }: AppShortcutProps) => {
     ]);
 
     return (
-        <div
+        <motion.div
+            drag
+            dragMomentum={false}
+            dragControls={controls}
+            animate={animationControls}
+            dragListener={false}
+            onPointerDown={(e) => controls.start(e)}
+            onPointerUp={resetPosition}
             className="relative pb-8 cursor-pointer w-16"
             onClick={() => {
                 if (isHighlightable) {
@@ -103,7 +128,7 @@ const AppShortcut = ({ appInfo, isHighlightable }: AppShortcutProps) => {
             >
                 {appInfo.name}
             </div>
-        </div>
+        </motion.div>
     );
 };
 
